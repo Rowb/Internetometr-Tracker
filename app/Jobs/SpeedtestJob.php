@@ -7,7 +7,6 @@ use App\Events\SpeedtestFailedEvent;
 use App\Helpers\SettingsHelper;
 use App\Helpers\SpeedtestHelper;
 use App\Interfaces\SpeedtestProvider;
-use App\Utils\OoklaTester;
 use Exception;
 use Healthcheck;
 use Henrywhitaker3\Healthchecks\Healthchecks;

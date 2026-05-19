@@ -6,7 +6,7 @@ use App\Helpers\SpeedtestHelper;
 use App\Interfaces\SpeedtestProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\Mocks\OoklaTesterMocker;
+use Tests\Mocks\InternetometerTesterMocker;
 use Tests\TestCase;
 
 class SpeedtestTest extends TestCase
@@ -20,7 +20,7 @@ class SpeedtestTest extends TestCase
         $this->app->singleton(
             SpeedtestProvider::class,
             function () {
-                return new OoklaTesterMocker();
+                return new InternetometerTesterMocker();
             }
         );
     }

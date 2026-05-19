@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Helpers\SettingsHelper;
 use App\Interfaces\SpeedtestProvider;
-use App\Utils\OoklaTester;
+use App\Utils\InternetometerTester;
 use File;
 use Illuminate\Support\ServiceProvider;
 use Schema;
@@ -21,7 +21,7 @@ class SpeedtestServiceProvider extends ServiceProvider
         $this->app->singleton(
             SpeedtestProvider::class,
             function () {
-                return new OoklaTester();
+                return new InternetometerTester();
             }
         );
     }

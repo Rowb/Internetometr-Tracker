@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 use App\Interfaces\SpeedtestProvider;
 use App\Models\Speedtest;
-use App\Utils\OoklaTester;
 use Carbon\Carbon;
 use Exception;
 use Henrywhitaker3\Healthchecks\Healthchecks;

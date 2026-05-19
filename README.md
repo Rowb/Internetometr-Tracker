@@ -2,11 +2,9 @@
 
 [![Docker pulls](https://img.shields.io/docker/pulls/henrywhitaker3/speedtest-tracker?style=flat-square)](https://hub.docker.com/r/henrywhitaker3/speedtest-tracker) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/henrywhitaker3/Speedtest-Tracker/Stable?label=master&logo=github&style=flat-square)](https://github.com/henrywhitaker3/Speedtest-Tracker/actions) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/henrywhitaker3/Speedtest-Tracker/Dev?label=dev&logo=github&style=flat-square)](https://github.com/henrywhitaker3/Speedtest-Tracker/actions) [![last_commit](https://img.shields.io/github/last-commit/henrywhitaker3/Speedtest-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Speedtest-Tracker/commits) [![issues](https://img.shields.io/github/issues/henrywhitaker3/Speedtest-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Speedtest-Tracker/issues) [![commit_freq](https://img.shields.io/github/commit-activity/m/henrywhitaker3/Speedtest-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Speedtest-Tracker/commits) ![version](https://img.shields.io/badge/version-v1.12.0-success?style=flat-square) [![license](https://img.shields.io/github/license/henrywhitaker3/Speedtest-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Speedtest-Tracker/blob/master/LICENSE)
 
-This program runs a speedtest check every hour and graphs the results. The back-end is written in [Laravel](https://laravel.com/) and the front-end uses [React](https://reactjs.org/). It uses the [Ookla's speedtest cli](https://www.speedtest.net/apps/cli) package to get the data and uses [Chart.js](https://www.chartjs.org/) to plot the results.
+This program runs a speedtest check every hour and graphs the results. The back-end is written in [Laravel](https://laravel.com/) and the front-end uses [React](https://reactjs.org/). It uses [internetometer-cli](https://github.com/Master290/internetometer-cli) (Яндекс Интернетометр) to get the data and uses [Chart.js](https://www.chartjs.org/) to plot the results.
 
 A demo can be found [here](https://speedtest.henrywhitaker.com)
-
-Disclaimer: You will need to accept Ookla's EULA and privacy agreements in order to use this container.
 
 ![speedtest](https://user-images.githubusercontent.com/36062479/78822484-a82b8300-79ca-11ea-8525-fdeae496a0bd.gif)
 
@@ -31,7 +29,6 @@ docker create \
       --name=speedtest \
       -p 8765:80 \
       -v /path/to/data:/config \
-      -e OOKLA_EULA_GDPR=true \
       --restart unless-stopped \
       henrywhitaker3/speedtest-tracker
 ```
@@ -52,7 +49,6 @@ services:
             - TZ=
             - PGID=
             - PUID=
-            - OOKLA_EULA_GDPR=true
         logging:
             driver: "json-file"
             options:
@@ -78,7 +74,7 @@ Container images are configured using parameters passed at runtime (such as thos
 |     :----:                |   --- |
 |     `-p 8765:80`          |   Exposes the webserver on port 8765  |
 |     `-v /config`          |   All the config files reside here.   |
-|     `-e OOKLA_EULA_GDPR`  |   Set to 'true' to accept the Ookla [EULA](https://www.speedtest.net/about/eula) and privacy agreement. If this is not set, the container will not start   |
+|     `-e INTERNETOMETER_LANG` |   Optional. Language for region name in measurements (`ru` or `en`). Defaults to `ru`   |
 |     `-e SLACK_WEBHOOK`    |   Optional. Put a slack webhook here to get slack notifications when a speedtest is run. To use discord webhooks, just append `/slack` to the end of your discord webhook URL   |
 |     `-e TELEGRAM_BOT_TOKEN`    |   Optional. Telegram bot API token.   |
 |     `-e TELEGRAM_CHAT_ID`    |   Optional. Telegram chat ID.   |
@@ -104,6 +100,8 @@ After enabling, you should change the password through the web UI.
 ### Manual Install
 
 For manual installations, please follow the instructions [here](https://github.com/henrywhitaker3/Speedtest-Tracker/wiki/Manual-Installation).
+
+Download the [internetometer-cli](https://github.com/Master290/internetometer-cli/releases) binary for your platform, place it at `app/Bin/internetometer`, and make it executable (`chmod +x app/Bin/internetometer`).
 
 ### Kubernetes
 

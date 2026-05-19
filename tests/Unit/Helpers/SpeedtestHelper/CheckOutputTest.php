@@ -2,18 +2,16 @@
 
 namespace Tests\Unit\Helpers\SpeedtestHelper;
 
-use App\Utils\OoklaTester;
+use App\Utils\InternetometerTester;
 use PHPUnit\Framework\TestCase;
-use Tests\Mocks\OoklaTesterMocker;
 
 class CheckOutputTest extends TestCase
 {
-    private OoklaTester $speedtestProvider;
+    private InternetometerTester $speedtestProvider;
 
     public function setUp(): void
     {
-        $this->speedtestProvider = new OoklaTester();
-        $this->mocker = new OoklaTesterMocker();
+        $this->speedtestProvider = new InternetometerTester();
     }
 
     /**
@@ -24,22 +22,12 @@ class CheckOutputTest extends TestCase
     public function testGoodOutput()
     {
         $expected = [
-            'type' => 'result',
-            'download' => ['bandwidth' => '*'],
-            'upload' => ['bandwidth' => '*'],
-            'ping' => ['latency' => '*'],
-            'server' => [
-                'id' => '*',
-                'name' => '*',
-                'host' => '*',
-                'port' => '*',
-            ],
-            'result' => [
-                'url' => '*',
-            ]
+            'download_mbps' => 100.5,
+            'upload_mbps' => 50.2,
+            'latency_ms' => 10,
         ];
 
-        $this->assertTrue($this->speedtestProvider->isOutputComplete($expected));
+        $this->assertTrue(InternetometerTester::isOutputComplete($expected));
     }
 
     /**
@@ -50,19 +38,10 @@ class CheckOutputTest extends TestCase
     public function testBadOutput()
     {
         $expected = [
-            'type' => 'result',
-            'download' => ['bandwidth' => '*'],
-            'server' => [
-                'id' => '*',
-                'name' => '*',
-                'host' => '*',
-                'port' => '*',
-            ],
-            'result' => [
-                'url' => '*',
-            ]
+            'download_mbps' => 100.5,
+            'latency_ms' => 10,
         ];
 
-        $this->assertFalse($this->speedtestProvider->isOutputComplete($expected));
+        $this->assertFalse(InternetometerTester::isOutputComplete($expected));
     }
 }

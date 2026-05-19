@@ -4,9 +4,9 @@ namespace Tests\Unit\Helpers\SpeedtestHelper;
 
 use App\Exceptions\SpeedtestFailureException;
 use App\Helpers\SpeedtestHelper;
-use App\Utils\OoklaTester;
+use App\Utils\InternetometerTester;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Mocks\OoklaTesterMocker;
+use Tests\Mocks\InternetometerTesterMocker;
 use Tests\TestCase;
 
 class SpeedtestTest extends TestCase
@@ -15,15 +15,15 @@ class SpeedtestTest extends TestCase
 
     private $output;
 
-    private OoklaTester $speedtestProvider;
+    private InternetometerTester $speedtestProvider;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->speedtestProvider = new OoklaTester();
+        $this->speedtestProvider = new InternetometerTester();
 
-        $this->output = (new OoklaTesterMocker())->output();
+        $this->output = (new InternetometerTesterMocker())->output();
     }
 
     /**
@@ -37,9 +37,9 @@ class SpeedtestTest extends TestCase
 
         $test = $this->speedtestProvider->run($this->output);
 
-        $this->assertEquals($output['ping']['latency'], $test->ping);
-        $this->assertEquals(SpeedtestHelper::convert($output['download']['bandwidth']), $test->download);
-        $this->assertEquals(SpeedtestHelper::convert($output['upload']['bandwidth']), $test->upload);
+        $this->assertEquals($output['latency_ms'], $test->ping);
+        $this->assertEquals($output['download_mbps'], $test->download);
+        $this->assertEquals($output['upload_mbps'], $test->upload);
     }
 
     /**
