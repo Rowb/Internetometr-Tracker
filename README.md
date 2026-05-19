@@ -22,49 +22,20 @@ A demo can be found [here](https://speedtest.henrywhitaker.com)
 
 ### Using Docker
 
-A docker image is available [here](https://hub.docker.com/r/henrywhitaker3/speedtest-tracker), you can create a new conatiner by running:
+Uses [internetometer-cli](https://github.com/Master290/internetometer-cli) (Yandex Internetometer). Requires [Docker Compose](https://docs.docker.com/compose/) v2.
 
 ```bash
-docker create \
-      --name=speedtest \
-      -p 8765:80 \
-      -v /path/to/data:/config \
-      --restart unless-stopped \
-      henrywhitaker3/speedtest-tracker
+curl -fsSL https://raw.githubusercontent.com/Rowb/Internetometr-Tracker/master/docker-compose.remote.yml -o docker-compose.yml
+DOCKER_BUILDKIT=1 docker compose up -d --build
 ```
 
-### Using Docker Compose
+Web UI: `http://localhost:8765` (or `http://<host>:8765`)
 
-```yml
-version: '3.3'
-services:
-    speedtest:
-        container_name: speedtest
-        image: henrywhitaker3/speedtest-tracker
-        ports:
-            - 8765:80
-        volumes:
-            - /path/to/data:/config
-        environment:
-            - TZ=
-            - PGID=
-            - PUID=
-        logging:
-            driver: "json-file"
-            options:
-                max-file: "10"
-                max-size: "200k"
-        restart: unless-stopped
+If you have cloned this repository:
+
+```bash
+docker compose up -d --build
 ```
-
-#### Images
-
-There are 2 different docker images:
-
-| Tag | Description |
-| :----: | --- |
-| latest | This is the stable release of the app |
-| dev | This release has more features, although could have some bugs |
 
 #### Parameters
 
@@ -73,7 +44,7 @@ Container images are configured using parameters passed at runtime (such as thos
 |     Parameter             |   Function    |
 |     :----:                |   --- |
 |     `-p 8765:80`          |   Exposes the webserver on port 8765  |
-|     `-v /config`          |   All the config files reside here.   |
+|     volume `speedtest_config` |   Database, `.env`, logs (mounted at `/config` in the container)   |
 |     `-e INTERNETOMETER_LANG` |   Optional. Language for region name in measurements (`ru` or `en`). Defaults to `ru`   |
 |     `-e SLACK_WEBHOOK`    |   Optional. Put a slack webhook here to get slack notifications when a speedtest is run. To use discord webhooks, just append `/slack` to the end of your discord webhook URL   |
 |     `-e TELEGRAM_BOT_TOKEN`    |   Optional. Telegram bot API token.   |

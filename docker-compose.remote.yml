@@ -1,0 +1,18 @@
+services:
+  speedtest:
+    build:
+      context: https://github.com/Rowb/Internetometr-Tracker.git
+      dockerfile: Dockerfile
+    image: internetometr-tracker:latest
+    container_name: speedtest
+    ports:
+      - "8765:80"
+    volumes:
+      - speedtest_config:/config
+    environment:
+      TZ: Europe/Moscow
+      INTERNETOMETER_LANG: ru
+    restart: unless-stopped
+
+volumes:
+  speedtest_config:
