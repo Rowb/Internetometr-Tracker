@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="author" content="Henry Whitaker">
+        <meta name="author" content="Rowb">
         <meta name="version" content="{{ config('speedtest.version', 'Unknown') }}">
 
         <link href="{{ App\Helpers\SettingsHelper::getBase() }}files/icons/themify/themify-icons.css" rel="stylesheet">

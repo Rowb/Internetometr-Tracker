@@ -18,7 +18,8 @@ fi
 
 mkdir -p database storage/framework/{cache,sessions,views} storage/logs bootstrap/cache
 touch database/speed.db
-chown -R www-data:www-data storage bootstrap/cache database
+chown -R www-data:www-data /config/www
+chmod -R u+rwX,g+rwX /config/www/storage /config/www/bootstrap/cache /config/www/database
 
 if ! grep -q '^APP_KEY=base64:' .env; then
     php artisan key:generate --force

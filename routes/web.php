@@ -30,6 +30,10 @@ Route::get(SettingsHelper::getBase() . 'files/{path?}', function ($file) {
     ->name('files');
 
 Route::get('/{path?}', function () {
-    return view('app', ['title' => SettingsHelper::get('app_name')->value]);
+    $appName = SettingsHelper::get('app_name');
+
+    return view('app', [
+        'title' => $appName ? $appName->value : config('app.name', 'Internetometer Tracker'),
+    ]);
 })->where('path', '^((?!\/api\/).)*$')
     ->name('react');

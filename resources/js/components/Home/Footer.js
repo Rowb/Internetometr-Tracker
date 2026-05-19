@@ -11,7 +11,13 @@ export default class Footer extends Component {
                 <Row>
                     <Col sm={{ span: 12 }} className="text-center">
                         <Version />
-                        <p className="text-muted">See the code on <a href="https://github.com/henrywhitaker3/Speedtest-Tracker" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+                        <p className="text-muted">
+                            <a href="https://github.com/Rowb/internetometer-tracker" target="_blank" rel="noopener noreferrer">Internetometer Tracker</a>
+                            {' · '}
+                            <a href="https://github.com/Master290/internetometer-cli" target="_blank" rel="noopener noreferrer">internetometer-cli</a>
+                            {' · '}
+                            <a href="https://yandex.ru/internet" target="_blank" rel="noopener noreferrer">Яндекс Интернетометр</a>
+                        </p>
                     </Col>
                 </Row>
             </Container>

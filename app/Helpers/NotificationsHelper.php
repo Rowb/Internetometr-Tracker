@@ -42,7 +42,7 @@ class NotificationsHelper {
      */
     public static function thresholdMessageStart(array $errors)
     {
-        $msg = 'For the latest speedtest, the ';
+        $msg = 'В последнем замере Internetometer ';
 
         for($i = 0; $i < sizeof($errors); $i++) {
             $key = $errors[$i];

@@ -37,6 +37,6 @@ class SpeedtestVersionCommand extends Command
      */
     public function handle()
     {
-        $this->info('Speedtest Tracker v' . config('speedtest.version'));
+        $this->info('Internetometer Tracker v' . config('speedtest.version'));
     }
 }

@@ -16,6 +16,6 @@ class AppVersionTest extends TestCase
     public function testVersionCommand()
     {
         $response = $this->artisan('speedtest:version')
-                         ->expectsOutput('Speedtest Tracker v' . config('speedtest.version'));
+                         ->expectsOutput('Internetometer Tracker v' . config('speedtest.version'));
     }
 }

@@ -31,7 +31,7 @@ export default class Version extends Component {
         .then((resp) => {
             var update = resp.data.update;
             if(update !== false) {
-                toast.info('A new version of Speedtest Tracker is available (v' + update.version + '). Go to the bottom of the page to update.');
+                toast.info('Доступна новая версия Internetometer Tracker (v' + update.version + '). Обновление внизу страницы.');
                 this.setState({
                     update: update.version,
                     changelog: update.changelog,
@@ -101,14 +101,14 @@ export default class Version extends Component {
         if(update === false) {
             return (
                 <div>
-                    <p className="text-muted mb-0 d-inline-block">Speedtest Tracker Version: {version}</p>
+                    <p className="text-muted mb-0 d-inline-block">Internetometer Tracker · v{version}</p>
                     <Changelog />
                 </div>
             );
         } else {
             return (
                 <div>
-                    <p className="text-muted mb-0 d-inline">Speedtest Tracker Version: {version} - </p>
+                    <p className="text-muted mb-0 d-inline">Internetometer Tracker · v{version} — </p>
                     <a href="#!" className="mb-0 d-inline" onClick={this.showModal}>New version available - v{update}</a>
 
                     <Modal show={modalShow} onHide={this.hideModal} animation={true}>

@@ -46,8 +46,8 @@ class SpeedtestFailedSlack extends Notification implements ShouldQueue
         return (new SlackMessage)
                 ->error()
                 ->attachment(function ($attachment) {
-                    $attachment->title('Failed speedtest')
-                               ->content('Something went wrong running your speedtest');
+                    $attachment->title('Ошибка замера Internetometer')
+                               ->content('Не удалось выполнить замер через Яндекс Интернетометр');
                 });
     }
 }

@@ -50,7 +50,7 @@ class SpeedtestPercentageThresholdNotificationSlack extends Notification
         return (new SlackMessage)
                 ->warning()
                 ->attachment(function ($attachment) use ($msg) {
-                    $attachment->title('Speedtest percentage threshold error')
+                    $attachment->title('Internetometer — отклонение от среднего')
                                ->content($msg);
                 });
     }

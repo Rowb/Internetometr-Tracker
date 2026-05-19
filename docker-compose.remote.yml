@@ -1,7 +1,7 @@
 services:
   speedtest:
     build:
-      context: https://github.com/Rowb/Internetometr-Tracker.git
+      context: https://github.com/Rowb/internetometer-tracker.git
       dockerfile: Dockerfile
     image: internetometr-tracker:latest
     container_name: speedtest

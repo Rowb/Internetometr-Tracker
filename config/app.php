@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Speedtest-Tracker'),
+    'name' => env('APP_NAME', 'Internetometer Tracker'),
 
     /*
     |--------------------------------------------------------------------------

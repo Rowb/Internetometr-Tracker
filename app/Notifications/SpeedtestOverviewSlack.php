@@ -52,7 +52,7 @@ class SpeedtestOverviewSlack extends Notification
         return (new SlackMessage)
                 ->warning()
                 ->attachment(function ($attachment) use ($data) {
-                    $attachment->title('Speedtest Daily Overview')
+                    $attachment->title('Internetometer — сводка за день')
                                ->fields([
                                     'Average ping' => $data['ping'] . ' ms',
                                     'Average download' => $data['download'] . ' Mbit/s',

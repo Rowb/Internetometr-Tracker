@@ -113,7 +113,7 @@ export default class HistoryGraph extends Component {
             },
             title: {
                 display: false,
-                text: 'Speedtests results for the last ' + days + ' days',
+                text: 'Internetometer — результаты за ' + days + ' дн.',
             },
             scales: {
                 xAxes: [{
@@ -224,7 +224,7 @@ export default class HistoryGraph extends Component {
             responsive: true,
             tooltips: {
                 callbacks: {
-                  label: (item) => `${item.yLabel} speedtests`,
+                  label: (item) => `${item.yLabel} замеров`,
                 },
             },
             scales: {
@@ -271,7 +271,7 @@ export default class HistoryGraph extends Component {
             responsive: true,
             tooltips: {
                 callbacks: {
-                  label: (item) => `${item.yLabel} speedtests`,
+                  label: (item) => `${item.yLabel} замеров`,
                 },
             },
             scales: {

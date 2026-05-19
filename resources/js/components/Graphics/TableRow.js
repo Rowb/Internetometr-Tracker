@@ -33,11 +33,11 @@ export default class TableRow extends Component {
         Axios.delete(url)
         .then((resp) => {
             console.log(resp);
-            toast.success('Speedtest deleted');
+            toast.success('Замер удалён');
         })
         .catch((err) => {
             if(err.response.status == 404) {
-                toast.warning('Speedtest not found');
+                toast.warning('Замер не найден');
             } else {
                 toast.error('Something went wrong');
             }
@@ -114,7 +114,7 @@ export default class TableRow extends Component {
                                     {fields.modal.map((e, i) => {
                                         if(e.type === 'url') {
                                             return (
-                                                <p key={i}>{e.key}: <a href={e.value} target="_blank" rel="noopener noreferer">Speedtest.net</a></p>
+                                                <p key={i}>{e.key}: <a href={e.value} target="_blank" rel="noopener noreferrer">Интернетометр</a></p>
                                             );
                                         } else {
                                             return (

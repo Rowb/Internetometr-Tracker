@@ -51,10 +51,10 @@ class SpeedtestOverviewTelegram extends Notification
     public function toTelegram($notifiable)
     {
         $data = $this->data;
-        $msg = "*Speedtest Daily Overview*
-Average ping: *".$data["ping"]."*
-Average download: *".$data["download"]."*
-Average upload: *".$data["upload"]."*";
+        $msg = "*Internetometer — сводка за день*
+Средний ping: *".$data["ping"]."*
+Средняя загрузка: *".$data["download"]."*
+Средняя отдача: *".$data["upload"]."*";
         return TelegramMessage::create()
                               ->to(SettingsHelper::get('telegram_chat_id')->value)
                               ->content($msg)

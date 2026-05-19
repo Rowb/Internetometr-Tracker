@@ -54,7 +54,7 @@ class SpeedtestCompleteSlack extends Notification
         return (new SlackMessage)
                 ->warning()
                 ->attachment(function ($attachment) use ($speedtest) {
-                    $attachment->title('New speedtest')
+                    $attachment->title('Новый замер Internetometer')
                                ->fields([
                                     'Ping' => $speedtest->ping . ' ms',
                                     'Download' => $speedtest->download . ' Mbit/s',

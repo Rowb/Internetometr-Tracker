@@ -23,7 +23,7 @@ export default class Navbar extends Component {
                 authRequired: false
             },
             {
-                name: 'All Tests',
+                name: 'Все замеры',
                 url: window.config.base + 'speedtests',
                 authRequired: false
             },

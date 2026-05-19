@@ -17,7 +17,7 @@ export default class ResetSettings extends Component {
 
         Axios.delete(url)
         .then((resp) => {
-            toast.success('All speedtests have been deleted.');
+            toast.success('Все замеры удалены.');
             this.toggleShow();
         })
         .catch((err) => {
@@ -31,11 +31,11 @@ export default class ResetSettings extends Component {
 
     render() {
         var show = this.state.show;
-        const title = 'Reset Speedtests';
+        const title = 'Сброс замеров';
 
         return (
             <>
-                <h4>Clear all speedtests</h4>
+                <h4>Удалить все замеры</h4>
                 <p className="text-muted">If using SQLite, a backup of the database will be stored in the location of the current database.</p>
                 <Button onClick={this.deleteAll} variant="danger">Delete all</Button>
             </>

@@ -39,7 +39,7 @@ class SpeedtestFailedTelegram extends Notification implements ShouldQueue
      */
     public function toTelegram($notifiable)
     {
-        $msg = "Error: something went wrong running your speedtest";
+        $msg = "Ошибка: не удалось выполнить замер Internetometer";
         return TelegramMessage::create()
                               ->to(SettingsHelper::get('telegram_chat_id')->value)
                               ->content($msg)

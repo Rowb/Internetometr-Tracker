@@ -50,7 +50,7 @@ class SpeedtestAbsoluteThresholdNotificationSlack extends Notification
         return (new SlackMessage)
                 ->warning()
                 ->attachment(function ($attachment) use ($msg) {
-                    $attachment->title('Speedtest absolute threshold error')
+                    $attachment->title('Internetometer — порог скорости')
                                ->content($msg);
                 });
     }
