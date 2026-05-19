@@ -1,7 +1,7 @@
-FROM golang:1.22-bookworm AS internetometer-build
+FROM golang:1.25-bookworm AS internetometer-build
 
 WORKDIR /src
-RUN git clone --depth 1 https://github.com/Master290/internetometer-cli.git .
+RUN git clone --depth 1 --branch 0.1.2 https://github.com/Master290/internetometer-cli.git .
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /internetometer ./cmd/cli/main.go
 
 FROM php:8.1-apache-bookworm
