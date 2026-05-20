@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libzip-dev \
         libsqlite3-dev \
         libxml2-dev \
+        libonig-dev \
         sqlite3 \
     && docker-php-ext-install pdo_sqlite zip bcmath mbstring xml \
     && a2enmod rewrite \
